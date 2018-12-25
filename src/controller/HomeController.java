@@ -93,7 +93,7 @@ public class HomeController extends Controller implements Initializable {
 //            goodsMsg4FlowPaneController.setGoods(goods);
 //            flowPane.getChildren().add(anchorPane);
 //            ------------------------------------
-            //左边垂直布局放头像和身份
+            //垂直布局放商品图和名称
             VBox vBox = new VBox();
             vBox.setAlignment(Pos.TOP_CENTER);
             vBox.setSpacing(15);
@@ -106,7 +106,17 @@ public class HomeController extends Controller implements Initializable {
             Label priceLabel = new Label("￥"+goods.getPrice());
             vBox.getChildren().addAll(imageView, nameLabel,priceLabel);
             imageView.setOnMouseClicked(event -> {
-                System.out.println("页面跳转至："+goods.getGoodname());
+               // System.out.println("页面跳转至："+goods.getGoodname());
+
+                Stage newStage = new Stage();
+                Scene scene = SceneFactory.createSence("/fxml/goodsDetail.fxml");
+                newStage.setScene(scene);
+                GoodsDetailController goodsDetailController = SceneFactory.getLoader().getController();
+                goodsDetailController.setDate(goods);
+                newStage.show();
+
+                Stage oldStage = (Stage) nickname.getScene().getWindow();
+                oldStage.close();
             });
             //水平布局加入大的内容容器
             flowPane.getChildren().add(vBox);
