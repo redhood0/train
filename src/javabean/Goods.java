@@ -12,7 +12,7 @@ public class Goods {
     private SimpleIntegerProperty stock = new SimpleIntegerProperty();
     private SimpleStringProperty unit = new SimpleStringProperty();
     private SimpleStringProperty imgurl = new SimpleStringProperty();
-    private SimpleStringProperty discount = new SimpleStringProperty();
+
 
 
     public int getId() {
@@ -111,15 +111,5 @@ public class Goods {
         this.imgurl.set(imgurl);
     }
 
-    public String getDiscount() {
-        return discount.get();
-    }
 
-    public SimpleStringProperty discountProperty() {
-        return discount;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount.set(discount);
-    }
 }

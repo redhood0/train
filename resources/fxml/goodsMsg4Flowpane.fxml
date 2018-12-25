@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="218.0" prefWidth="159.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.GoodsMsg4FlowPaneController">
+    <children>
+        <ImageView fx:id="goodsImg" fitHeight="121.0" fitWidth="127.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <Label fx:id="goodsname" layoutX="65.0" layoutY="150.0" text="名称"/>
+        <Label fx:id="price" layoutX="65.0" layoutY="176.0" text="价格"/>
+    </children>
+
+</AnchorPane>

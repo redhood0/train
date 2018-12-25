@@ -29,8 +29,12 @@
     </select>
 
     <insert id="insertUser" >
-        insert into customer (username,password,nickname) values (#{username},#{password},#{username})
+        insert into customer (username,password,nickname,url) values (#{username},#{password},#{username},#{url})
     </insert>
+
+    <update id="updatePassword" >
+        update customer set password = #{password} where username = #{username}
+    </update>
 
 
 

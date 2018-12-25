@@ -41,6 +41,19 @@ public class SceneFactory {
         return scene;
     }
 
+    public static Pane createPane(String fxml){
+        URL location = Main.class.getResource(fxml);
+        loader = new FXMLLoader(location);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return pane;
+    }
+
 
 
     public  static FXMLLoader getLoader(){

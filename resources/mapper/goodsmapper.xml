@@ -4,12 +4,16 @@
 
 <mapper namespace="mapper.GoodsMapper">
 
-    <!--<resultMap type="org.apache.ibatis.submitted.rounding.User" id="usermap">-->
-        <!--<id column="id" property="id"/>-->
-        <!--<result column="name" property="name"/>-->
-        <!--<result column="funkyNumber" property="funkyNumber"/>-->
-        <!--<result column="roundingMode" property="roundingMode"/>-->
-    <!--</resultMap>-->
+    <resultMap type="javabean.Goods" id="Goods">
+        <id column="id" property="id"/>
+        <result column="classfiy" property="classfiy"/>
+        <result column="goodname" property="goodname"/>
+        <result column="pro_num" property="proNum"/>
+        <result column="price" property="price"/>
+        <result column="stock" property="stock"/>
+        <result column="unit" property="unit"/>
+        <result column="imgurl" property="imgurl"/>
+    </resultMap>
 
     <!--<select id="getUser" resultMap="usermap">-->
 		<!--select * from users-->
@@ -22,6 +26,10 @@
 	<!--</insert>-->
     <select id="getGoodsNameByid" resultType="String">
         select goodname from goods where id = #{id}
+    </select>
+
+    <select id="getAllGoods" resultMap="Goods">
+        select * from goods
     </select>
 
 

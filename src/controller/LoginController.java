@@ -11,10 +11,11 @@ import javafx.stage.Stage;
 import util.SceneFactory;
 import util.ServiceManager;
 import util.SwitchUtil;
+import util.UserManager;
 
 import static javafx.scene.control.Alert.AlertType.INFORMATION;
 
-public class LoginController extends Controller{
+public class LoginController extends Controller {
     @FXML
     private TextField password;
     @FXML
@@ -26,21 +27,22 @@ public class LoginController extends Controller{
     public void login(ActionEvent actionEvent) {
         String username = this.username.getText();
         String password = this.password.getText();
-        boolean flag = ServiceManager.getUserService().login(username,password);
+        boolean flag = ServiceManager.getUserService().login(username, password);
 
         Alert alert = new Alert(INFORMATION);
         alert.setTitle("提示");
 
-        if(flag){
+        if (flag) {
             alert.setContentText("登陆成功");
+
             //弹出新界面
             Stage stage = new Stage();
-            SwitchUtil.switchPage(stage,"/fxml/home.fxml","/css/type.css");
+            SwitchUtil.switchPage(stage, "/fxml/home.fxml", "/css/type.css");
             stage.show();
             //删除旧界面
             Stage loginStage = (Stage) this.username.getScene().getWindow();
             loginStage.close();
-        }else{
+        } else {
             alert.setContentText("账号或密码错误，登陆失败");
         }
         alert.showAndWait();
@@ -49,11 +51,11 @@ public class LoginController extends Controller{
 
     public void toRegistPage(MouseEvent mouseEvent) {
         Stage loginStage = (Stage) this.username.getScene().getWindow();
-        SwitchUtil.switchPage(loginStage,"/fxml/register.fxml","/css/type.css");
+        SwitchUtil.switchPage(loginStage, "/fxml/register.fxml", "/css/type.css");
     }
 
 
-    public void setStage(Stage stage){
+    public void setStage(Stage stage) {
         stage = this.stage;
     }
 

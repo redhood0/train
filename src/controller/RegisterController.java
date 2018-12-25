@@ -23,7 +23,6 @@ public class RegisterController extends Controller {
         String password = this.password.getText();
         String password4commit = this.password4commit.getText();
 
-        int flag = 0;
         Alert alert = new Alert(INFORMATION);
         alert.setTitle("提示");
         try {

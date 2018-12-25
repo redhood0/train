@@ -12,6 +12,19 @@ public class User {
     private SimpleStringProperty sex = new SimpleStringProperty();
     private SimpleStringProperty telephone = new SimpleStringProperty();
     private SimpleStringProperty address = new SimpleStringProperty();
+    private SimpleStringProperty url = new SimpleStringProperty();
+
+    public String getUrl() {
+        return url.get();
+    }
+
+    public SimpleStringProperty urlProperty() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url.set(url);
+    }
 
     public int getId() {
         return id.get();

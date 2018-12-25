@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         //创建场景
-        Scene scene = SceneFactory.createSence("/fxml/login.fxml",1600, 960);
+        Scene scene = SceneFactory.createSence("/fxml/login.fxml",600, 600);
         scene.getStylesheets().add( "/css/type.css");
         //舞台放入控制器
         LoginController loginController = SceneFactory.getLoader().getController();
