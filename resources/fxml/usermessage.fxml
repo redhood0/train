@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="565.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="25.0" layoutY="31.0" text="个人资料">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="101.0" layoutY="82.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="301.0" layoutY="82.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="503.0" layoutY="82.0" startX="-100.0" />
+      <Label layoutX="25.0" layoutY="107.0" text="当前头像：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="82.0" layoutX="137.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Pictures/动物图片/mm.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="25.0" layoutY="177.0" text="头像：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="231.0" text="昵称：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="285.0" text="年龄：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="338.0" text="性别：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="391.0" text="居住地：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="439.0" text="电话：">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="100.0" layoutY="284.0" />
+      <TextField layoutX="101.0" layoutY="390.0" />
+      <TextField layoutX="100.0" layoutY="438.0" />
+      <Button layoutX="256.0" layoutY="507.0" mnemonicParsing="false" text="提交" textFill="#2e2929" />
+      <TextField layoutX="100.0" layoutY="176.0" />
+      <TextField layoutX="101.0" layoutY="230.0" />
+      <RadioButton layoutX="125.0" layoutY="342.0" mnemonicParsing="false" text="男" />
+      <RadioButton layoutX="239.0" layoutY="342.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="42.0" text="女" />
+   </children>
+</AnchorPane>

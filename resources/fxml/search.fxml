@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="2.0" layoutY="7.0" prefHeight="519.0" prefWidth="646.0">
+         <children>
+            <TextField layoutX="148.0" layoutY="28.0" />
+            <Button layoutX="332.0" layoutY="28.0" mnemonicParsing="false" text="搜索" />
+            <Button layoutX="500.0" layoutY="29.0" mnemonicParsing="false" text="收藏夹" />
+            <Button layoutX="561.0" layoutY="29.0" mnemonicParsing="false" text="购物车" />
+            <Button layoutX="81.0" layoutY="74.0" mnemonicParsing="false" text="默认排序" />
+            <Button layoutX="148.0" layoutY="74.0" mnemonicParsing="false" text="价格排序" />
+            <AnchorPane layoutY="116.0" prefHeight="348.0" prefWidth="646.0" />
+            <Button layoutX="390.0" layoutY="470.0" mnemonicParsing="false" text="Go" />
+            <ScrollBar layoutX="242.0" layoutY="470.0" prefHeight="23.0" prefWidth="135.0" />
+            <Label contentDisplay="RIGHT" layoutX="28.0" layoutY="20.0" prefHeight="42.0" prefWidth="106.0" text="淘宝网">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Button layoutX="450.0" layoutY="28.0" mnemonicParsing="false" text="注销" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0"
+            fx:controller="controller.LoginController" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutX="187.0" layoutY="189.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+               prefHeight="30.0" prefWidth="40.0" text="账号" AnchorPane.topAnchor="189.0">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="187.0" layoutY="244.0" prefHeight="23.0" prefWidth="40.0" text="密码">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="username" promptText="请输入账号" layoutX="257.0" layoutY="189.0" prefHeight="30.0"
+                   prefWidth="161.0"/>
+        <TextField fx:id="password" promptText="请输入密码" layoutX="257.0" layoutY="243.0" prefHeight="30.0"
+                   prefWidth="161.0"/>
+
+        <Button layoutX="368.0" layoutY="290.0" mnemonicParsing="false" text="登录"
+                onAction="#login">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Button>
+
+        <Label layoutX="243.0" layoutY="350.0" text="免费注册" onMouseClicked="#toRegistPage">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="237.0" layoutY="42.0" text="登录">
+            <font>
+                <Font size="50.0"/>
+            </font>
+        </Label>
+        <Label layoutX="368.0" layoutY="350.0" text="忘记密码">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

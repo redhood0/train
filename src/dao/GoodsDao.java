@@ -22,8 +22,8 @@ public class GoodsDao {
 
     public static void main(String[] args) {
         DbDirverFactory.driver();
-        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
-        System.out.println(goodsDao.getGoodsNameByid(1));
+        UserDao goodsDao = new UserDao(DbDirverFactory.getFactory());
+        System.out.println(goodsDao.getUserByName("zq"));
 
     }
 

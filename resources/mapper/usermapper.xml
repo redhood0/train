@@ -1,0 +1,38 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.UserMapper">
+
+    <resultMap type="javabean.User" id="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="age" property="age"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickname"/>
+        <result column="sex" property="sex"/>
+        <result column="telephone" property="telephone"/>
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <!--<select id="getUser" resultMap="usermap">-->
+		<!--select * from users-->
+	<!--</select>-->
+
+    <!--<insert id="insert">-->
+	    <!--insert into users (id, name, funkyNumber, roundingMode) values (-->
+	    	<!--#{id}, #{name}, #{funkyNumber}, #{roundingMode}-->
+	    <!--)-->
+	<!--</insert>-->
+    <select id="getUserByName" resultMap="user">
+        select * from customer where username = #{username}
+    </select>
+
+    <insert id="insertUser" >
+        insert into customer (username,password,nickname) values (#{username},#{password},#{username})
+    </insert>
+
+
+
+
+</mapper>
