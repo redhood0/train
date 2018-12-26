@@ -22,7 +22,6 @@ public class GoodsDao {
         String goodsname = mapper.getGoodsNameByid(id);
         sqlSession.close();
         return goodsname;
-
     }
 
     public List<Goods> getAllGoods(){
@@ -33,11 +32,23 @@ public class GoodsDao {
         return goodsList;
     }
 
+
+    public Goods getGoodsByid(int id){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+        Goods goods = mapper.getGoodsByid(id);
+        return goods;
+    }
+
     public static void main(String[] args) {
         DbDirverFactory.driver();
         //GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
-        ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
-        System.out.println(shopCartDao.insertGoodsToCart(1,3,4));
+//        ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
+//        System.out.println(shopCartDao.getGoodsByUid(4));
+
+        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
+
+        System.out.println(goodsDao.getGoodsByid(1).getGoodname());
 
     }
 

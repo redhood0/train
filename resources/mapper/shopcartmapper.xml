@@ -15,6 +15,11 @@
         <!--<result column="imgurl" property="imgurl"/>-->
     <!--</resultMap>-->
 
+    <resultMap type="javabean.CartItem" id="cartItem">
+    <id column="gid" property="id"/>
+    <result column="goods_num" property="buyNum"/>
+    </resultMap>
+
     <!--<select id="getUser" resultMap="usermap">-->
     <!--select * from users-->
     <!--</select>-->
@@ -34,6 +39,11 @@
 
    <select id="getCidByUid" resultType="int">
       select id from shopcart where customer_id = #{uId}
+   </select>
+
+    <!--根据用户查出该用户购物车里有些啥-->
+    <select id="getGoodsByCid" resultMap="cartItem">
+        select gid,goods_num from shopcart_goods where cid = #{cId}
    </select>
 
     <insert id="insertCart4User" >

@@ -18,48 +18,52 @@
     <bottom>
 
     </bottom>
-   <top>
-      <AnchorPane prefHeight="92.0" prefWidth="1009.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button layoutX="929.0" layoutY="32.0" mnemonicParsing="false" text="back" />
-            <Label layoutX="29.0" layoutY="21.0" text="购物车">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </top>
-   <bottom>
-      <AnchorPane prefHeight="97.0" prefWidth="1009.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="35.0" layoutY="42.0" text="删除所有商品" />
-            <Label layoutX="177.0" layoutY="42.0" text="将所有商品移至收藏夹" />
-            <Label layoutX="552.0" layoutY="39.0" text="合计：">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="626.0" layoutY="34.0" text="￥0.00">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </Label>
-            <Button layoutX="854.0" layoutY="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="103.0" text="结算" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </AnchorPane>
-   </bottom>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ListView prefHeight="489.0" prefWidth="1010.0" />
-         </children>
-      </AnchorPane>
-   </center>
-
+    <top>
+        <AnchorPane prefHeight="119.0" prefWidth="1010.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="929.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#toHomePage" text="back" />
+                <Label layoutX="29.0" layoutY="21.0" text="购物车">
+                    <font>
+                        <Font size="40.0" />
+                    </font>
+                </Label>
+            <Label layoutX="110.0" layoutY="85.0" text="商品信息" />
+            <Label layoutX="364.0" layoutY="85.0" text="单价" />
+            <Label layoutX="516.0" layoutY="85.0" text="数量" />
+            <Label layoutX="703.0" layoutY="85.0" text="金额" />
+            <Label layoutX="897.0" layoutY="85.0" text="操作" />
+            </children>
+        </AnchorPane>
+    </top>
+    <bottom>
+        <AnchorPane prefHeight="97.0" prefWidth="1009.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="35.0" layoutY="42.0" text="删除所有商品" />
+                <Label layoutX="177.0" layoutY="42.0" text="将所有商品移至收藏夹" />
+                <Label layoutX="552.0" layoutY="39.0" text="合计：">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="totalPrice" layoutX="626.0" layoutY="34.0" text="￥0.00">
+                    <font>
+                        <Font size="29.0" />
+                    </font>
+                </Label>
+                <Button layoutX="854.0" layoutY="22.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="103.0" text="结算" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </AnchorPane>
+    </bottom>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ListView fx:id="lv_cartList" prefHeight="489.0" prefWidth="1010.0" />
+            </children>
+        </AnchorPane>
+    </center>
 
 
 </BorderPane>

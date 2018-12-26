@@ -1,5 +1,6 @@
 package dao;
 
+import javabean.CartItem;
 import mapper.ShopCaetMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -55,6 +56,15 @@ public class ShopCartDao {
         int row = mapper.insertGoodsToCart(goodsId,goodsNum,cid);
         sqlSession.commit();
         return row;
+    }
+
+    public List<CartItem> getGoodsByUid(int userId){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ShopCaetMapper mapper = sqlSession.getMapper(ShopCaetMapper.class);
+        //先查出购物车id
+        int cid = mapper.getCidByUid(userId);
+        List<CartItem> cartItems = mapper.getGoodsByCid(cid);
+        return cartItems;
     }
 
 }

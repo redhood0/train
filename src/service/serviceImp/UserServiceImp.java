@@ -1,17 +1,23 @@
 package service.serviceImp;
 
+import dao.GoodsDao;
 import dao.ShopCartDao;
 import dao.UserDao;
+import javabean.CartItem;
+import javabean.Goods;
 import javabean.User;
 import service.UserService;
 import util.DbDirverFactory;
 import util.ServiceManager;
 import util.UserManager;
 
+import java.util.List;
+
 public class UserServiceImp implements UserService {
 
     private UserDao userDao = new UserDao(DbDirverFactory.getFactory());
     private ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
+    private GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
 
     @Override
     public boolean login(String username, String password) {
@@ -78,5 +84,23 @@ public class UserServiceImp implements UserService {
     public int addGoodsToShopCart(int userId, int goodsId, int goodsNum) {
         int row = shopCartDao.insertGoodsToCart(userId,goodsId,goodsNum);
         return row;
+    }
+
+    /**
+     * 获取用户的购物车的信息，包装成一个list传出。
+     * @param uid
+     * @return
+     */
+    @Override
+    public List<CartItem> getCartItemMsg4show(int uid) {
+        List<CartItem> cartItems = shopCartDao.getGoodsByUid(uid);
+        for(CartItem item : cartItems){
+            Goods good = goodsDao.getGoodsByid(item.getId());
+            item.setGoodname(good.getGoodname());
+            item.setImgurl(good.getImgurl());
+            item.setPrice(good.getPrice());
+            item.setUnit(good.getUnit());
+        }
+        return cartItems;
     }
 }
