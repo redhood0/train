@@ -101,7 +101,6 @@ public class HomeController extends Controller implements Initializable {
             imageView.setFitWidth(100);
             imageView.setFitHeight(100);
 
-
             Label nameLabel = new Label(goods.getGoodname());
             Label priceLabel = new Label("￥"+goods.getPrice());
             vBox.getChildren().addAll(imageView, nameLabel,priceLabel);
@@ -122,15 +121,27 @@ public class HomeController extends Controller implements Initializable {
             flowPane.getChildren().add(vBox);
         }
 
-//        AnchorPane anchorPane2 = (AnchorPane)SceneFactory.createPane("/fxml/goodsMsg4Flowpane.fxml");
-//        AnchorPane anchorPane3 = (AnchorPane)SceneFactory.createPane("/fxml/goodsMsg4Flowpane.fxml");
-//        AnchorPane anchorPane4 = (AnchorPane)SceneFactory.createPane("/fxml/goodsMsg4Flowpane.fxml");
-//        AnchorPane anchorPane5 = (AnchorPane)SceneFactory.createPane("/fxml/goodsMsg4Flowpane.fxml");
-//        flowPane.getChildren().add(anchorPane1);
-//        flowPane.getChildren().add(anchorPane2);
-//        flowPane.getChildren().add(anchorPane3);
-//        flowPane.getChildren().add(anchorPane4);
-//        flowPane.getChildren().add(anchorPane5);
+    }
+
+    /**
+     * 到购物车页面
+     * @param mouseEvent
+     */
+    public void toShopCartPage(MouseEvent mouseEvent) {
+        //弹出登录界面
+        Stage stage = new Stage();
+        SwitchUtil.switchPage(stage, "/fxml/shopCart.fxml", "/css/type.css");
+        stage.show();
+        //删除旧界面
+        Stage oldStage = (Stage) this.keyword.getScene().getWindow();
+        oldStage.close();
+    }
+
+    /**
+     * 到我的收藏页面
+     * @param mouseEvent
+     */
+    public void toMyFavoritPage(MouseEvent mouseEvent) {
 
     }
 }

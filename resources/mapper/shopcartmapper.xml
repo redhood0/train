@@ -1,0 +1,50 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ShopCaetMapper">
+
+    <!--<resultMap type="javabean.Goods" id="Goods">-->
+        <!--<id column="id" property="id"/>-->
+        <!--<result column="classfiy" property="classfiy"/>-->
+        <!--<result column="goodname" property="goodname"/>-->
+        <!--<result column="pro_num" property="proNum"/>-->
+        <!--<result column="price" property="price"/>-->
+        <!--<result column="stock" property="stock"/>-->
+        <!--<result column="unit" property="unit"/>-->
+        <!--<result column="imgurl" property="imgurl"/>-->
+    <!--</resultMap>-->
+
+    <!--<select id="getUser" resultMap="usermap">-->
+    <!--select * from users-->
+    <!--</select>-->
+
+    <!--<insert id="insert">-->
+    <!--insert into users (id, name, funkyNumber, roundingMode) values (-->
+    <!--#{id}, #{name}, #{funkyNumber}, #{roundingMode}-->
+    <!--)-->
+    <!--</insert>-->
+    <select id="getGoodsByUserId" resultType="int">
+        SELECT gid FROM shopcart_goods where cid=(select id from shopcart where customer_id = #{customerId});
+    </select>
+
+    <insert id="insertGoodsToCart" >
+        insert into shopcart_goods (gid,goods_num,cid) values (#{goodId},#{goods_num},#{cId})
+    </insert>
+
+   <select id="getCidByUid" resultType="int">
+      select id from shopcart where customer_id = #{uId}
+   </select>
+
+    <insert id="insertCart4User" >
+        insert into shopcart (customer_id) values (#{userId})
+    </insert>
+
+    <!--<select id="getAllGoods" resultMap="Goods">-->
+        <!--select * from goods-->
+    <!--</select>-->
+
+
+
+
+</mapper>

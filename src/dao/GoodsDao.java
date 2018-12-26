@@ -35,11 +35,9 @@ public class GoodsDao {
 
     public static void main(String[] args) {
         DbDirverFactory.driver();
-        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
-
-        for(Goods goods : goodsDao.getAllGoods()){
-            System.out.println(goods.getGoodname());
-        }
+        //GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
+        ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
+        System.out.println(shopCartDao.insertGoodsToCart(1,3,4));
 
     }
 

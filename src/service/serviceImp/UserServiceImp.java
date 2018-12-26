@@ -1,14 +1,17 @@
 package service.serviceImp;
 
+import dao.ShopCartDao;
 import dao.UserDao;
 import javabean.User;
 import service.UserService;
 import util.DbDirverFactory;
+import util.ServiceManager;
 import util.UserManager;
 
 public class UserServiceImp implements UserService {
 
     private UserDao userDao = new UserDao(DbDirverFactory.getFactory());
+    private ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
 
     @Override
     public boolean login(String username, String password) {
@@ -40,6 +43,11 @@ public class UserServiceImp implements UserService {
             throw new Exception("用户名有重复");
         }
         int row = userDao.insertUSer(username, password);
+        if(row != 0 ){
+            int id = userDao.getUserByName(username).getId();
+            shopCartDao.insertCart4User(id);
+            return row;
+        }
         return row;
     }
 
@@ -64,5 +72,11 @@ public class UserServiceImp implements UserService {
             throw new Exception("原始密码错误");
         }
         return userDao.updatePassword(username,newPassword);
+    }
+
+    @Override
+    public int addGoodsToShopCart(int userId, int goodsId, int goodsNum) {
+        int row = shopCartDao.insertGoodsToCart(userId,goodsId,goodsNum);
+        return row;
     }
 }

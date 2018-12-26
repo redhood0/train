@@ -1,8 +1,11 @@
 package controller;
 
 import javabean.Goods;
+import javabean.User;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -10,19 +13,25 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneFactory;
+import util.ServiceManager;
+import util.UserManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static javax.print.attribute.standard.MediaSizeName.A;
+
 public class GoodsDetailController extends Controller {
-
-    public TextField buyNum;
-
     public Goods goods;
-    public ImageView goodimg;
-    public Label goodname;
-    public Label price;
 
+    @FXML
+    private TextField buyNum;
+    @FXML
+    private ImageView goodimg;
+    @FXML
+    private Label goodname;
+    @FXML
+    private Label price;
 
     public void toHomePage(MouseEvent mouseEvent) {
         Stage newStage = new Stage();
@@ -34,16 +43,54 @@ public class GoodsDetailController extends Controller {
         oldStage.close();
     }
 
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println(goods);
-//        goodimg.setImage(new Image("http://imglf6.nosdn0.126.net/img/blZEeUZPK3hmQ25hd05qbkFLK3Uvd3FvMC9vZmtMRHUvSzEwRUUzWGFZSUlYWHRMeFBqOWJBPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0"));
-//    }
-
+    /**
+     * 将获取到的商品信息载入页面节点
+     *
+     * @param goods
+     */
     public void setDate(Goods goods) {
         this.goods = goods;
         goodname.setText(goods.getGoodname());
         price.setText("￥" + goods.getPrice());
         goodimg.setImage(new Image(goods.getImgurl()));
+    }
+
+    /**
+     * 减少按钮
+     *
+     * @param mouseEvent
+     */
+    public void minusBuyNum(MouseEvent mouseEvent) {
+        String butNUm = buyNum.getText();
+        int num = Integer.parseInt(butNUm);
+        if (num <= 0) {
+            return;
+        } else {
+            num--;
+        }
+        butNUm = String.valueOf(num);
+        buyNum.setText(butNUm);
+    }
+
+    /**
+     * 增加按钮
+     *
+     * @param mouseEvent
+     */
+    public void addBuyNum(MouseEvent mouseEvent) {
+        String butNUm = buyNum.getText();
+        int num = Integer.parseInt(butNUm);
+        num++;
+        butNUm = String.valueOf(num);
+        buyNum.setText(butNUm);
+    }
+
+    public void addToCart(MouseEvent mouseEvent) {
+        String num = buyNum.getText();
+        ServiceManager.getUserService().addGoodsToShopCart(UserManager.getUser().getId(), goods.getId(), Integer.parseInt(num));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("信息");
+        alert.setContentText("加入购物车成功");
+        alert.showAndWait();
     }
 }

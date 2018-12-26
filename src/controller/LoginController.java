@@ -23,7 +23,10 @@ public class LoginController extends Controller {
 
     private Stage stage;
 
-
+    /**
+     * 注册功能
+     * @param actionEvent
+     */
     public void login(ActionEvent actionEvent) {
         String username = this.username.getText();
         String password = this.password.getText();
@@ -48,7 +51,10 @@ public class LoginController extends Controller {
         alert.showAndWait();
     }
 
-
+    /**
+     * 跳转注册页面
+     * @param mouseEvent
+     */
     public void toRegistPage(MouseEvent mouseEvent) {
         Stage loginStage = (Stage) this.username.getScene().getWindow();
         SwitchUtil.switchPage(loginStage, "/fxml/register.fxml", "/css/type.css");
