@@ -16,4 +16,6 @@ public interface ShopCaetMapper {
 
     public List<CartItem> getGoodsByCid(int cId);
 
+    public int deleteByGoodsId(@Param("gid") int gid,@Param("customerId") int customerId);
+
 }

@@ -24,12 +24,16 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ShopCartController extends Controller implements Initializable {
+public class ShopCartController extends Controller  {
     @FXML
     private Label totalPrice;
     @FXML
     private ListView<CartItem> lv_cartList;
     private ObservableList<CartItem> observableList = FXCollections.observableArrayList();
+
+    public ShopCartController(){
+        ControllerMannager.setControllerHashMap("ShopCartController",this);
+    }
 
     public void toHomePage(MouseEvent mouseEvent) {
         //弹出登录界面
@@ -41,8 +45,8 @@ public class ShopCartController extends Controller implements Initializable {
         oldStage.close();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         initItem();
     }
 
@@ -52,20 +56,23 @@ public class ShopCartController extends Controller implements Initializable {
         List<CartItem> cartItems = ServiceManager.getUserService().getCartItemMsg4show(UserManager.getUser().getId());
         //清空控件内元素
         lv_cartList.getItems().removeAll();
+        observableList.clear();
         //绑定数据源和listview
         for (CartItem item : cartItems) {
             observableList.add(item);
             total += (double) item.getBuyNum()*Double.parseDouble(item.getPrice());
         }
         lv_cartList.setItems(observableList);
-        //  lv_cartList.setCellFactory(n -> {return null});
-        lv_cartList.setCellFactory(new Callback<ListView<CartItem>, ListCell<CartItem>>() {
-            @Override
-            public ListCell<CartItem> call(ListView<CartItem> param) {
-                return new ColorCell();
-            }
-        });
+        lv_cartList.setCellFactory(n -> {return new ColorCell();});
+//        lv_cartList.setCellFactory(new Callback<ListView<CartItem>, ListCell<CartItem>>() {
+//            @Override
+////            public ListCell<CartItem> call(ListView<CartItem> param) {
+////                return new ColorCell();
+////            }
+////        });
         totalPrice.setText("￥"+String.valueOf(total));
+
+
     }
 
     class ColorCell extends ListCell<CartItem> {
@@ -76,7 +83,7 @@ public class ShopCartController extends Controller implements Initializable {
 
             if (item != null) {
                 ShopCartItemController shopCartItemController = SceneFactory.getLoader().getController();
-                shopCartItemController.setValue(item);
+                shopCartItemController.setValue(item,observableList);
                 setGraphic(anchorPane);
             } else {
                 setGraphic(null);

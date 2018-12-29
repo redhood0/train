@@ -37,6 +37,11 @@
     </select>
 
 
+    <select id="getGoodsByKeyWord" resultMap="Goods">
+        select * from goods where goodname like '%${keyword}%'
+    </select>
+
+
 
 
 

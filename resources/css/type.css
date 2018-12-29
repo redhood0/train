@@ -192,3 +192,10 @@
     -fx-background-size: stretch,stretch;
     -fx-background-position: center,center;
 }
+
+/**home商品边框**/
+.goods-border{
+    -fx-border-width: 2;
+}
+
+

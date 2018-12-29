@@ -50,6 +50,10 @@
         insert into shopcart (customer_id) values (#{userId})
     </insert>
 
+    <delete id="deleteByGoodsId">
+         delete from shopcart_goods where gid = #{gid} and cid = (select id from shopcart where customer_id = #{customerId})
+    </delete>
+
     <!--<select id="getAllGoods" resultMap="Goods">-->
         <!--select * from goods-->
     <!--</select>-->

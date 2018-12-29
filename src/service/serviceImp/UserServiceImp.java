@@ -103,4 +103,16 @@ public class UserServiceImp implements UserService {
         }
         return cartItems;
     }
+
+    /**
+     * 删除购物车中的特定商品，因为没有缓存的机制，所有还是走数据库
+     * @param gid
+     * @param uid
+     * @return
+     */
+    @Override
+    public int deleteGoodFromCart(int gid, int uid) {
+        int row = shopCartDao.deleteByGoodsId(gid,uid);
+        return row;
+    }
 }

@@ -40,17 +40,21 @@ public class GoodsDao {
         return goods;
     }
 
+    public List<Goods> getGoodsByKeyWord(String keyword){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+        List<Goods> goods = mapper.getGoodsByKeyWord(keyword);
+        return goods;
+    }
+
     public static void main(String[] args) {
         DbDirverFactory.driver();
-        //GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
-//        ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
-//        System.out.println(shopCartDao.getGoodsByUid(4));
-
-        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
-
-        System.out.println(goodsDao.getGoodsByid(1).getGoodname());
-
-    }
+//        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
+        ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
+        System.out.println(shopCartDao.deleteByGoodsId(7,4));
+//        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
+//        System.out.println(goodsDao.getGoodsByKeyWord("电"));
+}
 
 
 

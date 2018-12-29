@@ -2,6 +2,7 @@ package dao;
 
 import javabean.CartItem;
 import mapper.ShopCaetMapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -56,6 +57,15 @@ public class ShopCartDao {
         int row = mapper.insertGoodsToCart(goodsId,goodsNum,cid);
         sqlSession.commit();
         return row;
+    }
+
+    public int deleteByGoodsId(int gid, int uid){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ShopCaetMapper mapper = sqlSession.getMapper(ShopCaetMapper.class);
+        int row = mapper.deleteByGoodsId(gid,uid);
+        sqlSession.commit();
+        return row;
+
     }
 
     public List<CartItem> getGoodsByUid(int userId){

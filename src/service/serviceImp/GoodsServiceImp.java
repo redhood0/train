@@ -17,4 +17,10 @@ public class GoodsServiceImp implements GoodsService {
         List<Goods> goodsList = goodsDao.getAllGoods();
         return goodsList;
     }
+
+    @Override
+    public List<Goods> searchBykeyWord(String keyword) {
+        List<Goods> goodsList = goodsDao.getGoodsByKeyWord(keyword);
+        return goodsList;
+    }
 }

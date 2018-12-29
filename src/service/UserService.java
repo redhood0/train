@@ -15,4 +15,6 @@ public interface UserService {
     public int addGoodsToShopCart(int userId,int goodsId,int goodsNum);
 
     public List<CartItem> getCartItemMsg4show(int uid);
+
+    public int deleteGoodFromCart(int gid,int uid);
 }

@@ -42,6 +42,7 @@ public class HomeController extends Controller implements Initializable {
 
     /**
      * 注销
+     *
      * @param mouseEvent
      */
     public void toLoginPage(MouseEvent mouseEvent) {
@@ -56,6 +57,7 @@ public class HomeController extends Controller implements Initializable {
 
     /**
      * 跳转至用户中心
+     *
      * @param mouseEvent
      */
     public void toUserCenter(MouseEvent mouseEvent) {
@@ -70,6 +72,7 @@ public class HomeController extends Controller implements Initializable {
 
     /**
      * 初始化页面，加载商品列表和头像
+     *
      * @param location
      * @param resources
      */
@@ -82,30 +85,39 @@ public class HomeController extends Controller implements Initializable {
         initGoodsList();
     }
 
-    public void initGoodsList(){
+    /**
+     * 初始化显示所有商品
+     * TODO：完成分页功能
+     */
+    public void initGoodsList() {
         //通过service获取一个商品list
         List<Goods> goodsList = ServiceManager.getGoodsService().showAllGoods();
-        for(Goods goods : goodsList){
-//            -------------------------------
-//            goodsObservableList.add(goods);
-//            AnchorPane anchorPane = (AnchorPane)SceneFactory.createPane("/fxml/goodsMsg4Flowpane.fxml");
-//            GoodsMsg4FlowPaneController goodsMsg4FlowPaneController = SceneFactory.getLoader().getController();
-//            goodsMsg4FlowPaneController.setGoods(goods);
-//            flowPane.getChildren().add(anchorPane);
-//            ------------------------------------
+        showGoodsInFlowpane(goodsList);
+    }
+
+    /**
+     * 在flowpane中展示商品
+     */
+    public void showGoodsInFlowpane(List<Goods> goodsList) {
+        flowPane.getChildren().clear();
+        if (goodsList == null) {
+            return;
+        }
+        for (Goods goods : goodsList) {
             //垂直布局放商品图和名称
             VBox vBox = new VBox();
             vBox.setAlignment(Pos.TOP_CENTER);
             vBox.setSpacing(15);
+            vBox.setStyle("-fx-border-color: #c1c1c1;");
             ImageView imageView = new ImageView(new Image(goods.getImgurl()));
             imageView.setFitWidth(100);
             imageView.setFitHeight(100);
 
             Label nameLabel = new Label(goods.getGoodname());
-            Label priceLabel = new Label("￥"+goods.getPrice());
-            vBox.getChildren().addAll(imageView, nameLabel,priceLabel);
+            Label priceLabel = new Label("￥" + goods.getPrice());
+            vBox.getChildren().addAll(imageView, nameLabel, priceLabel);
             imageView.setOnMouseClicked(event -> {
-               // System.out.println("页面跳转至："+goods.getGoodname());
+                // System.out.println("页面跳转至："+goods.getGoodname());
 
                 Stage newStage = new Stage();
                 Scene scene = SceneFactory.createSence("/fxml/goodsDetail.fxml");
@@ -120,14 +132,14 @@ public class HomeController extends Controller implements Initializable {
             //水平布局加入大的内容容器
             flowPane.getChildren().add(vBox);
         }
-
     }
 
     /**
      * 到购物车页面
-     * @param mouseEvent
+     *
+     * @param event
      */
-    public void toShopCartPage(MouseEvent mouseEvent) {
+    public void toShopCartPage(MouseEvent event) {
         //弹出登录界面
         Stage stage = new Stage();
         SwitchUtil.switchPage(stage, "/fxml/shopCart.fxml", "/css/type.css");
@@ -139,9 +151,18 @@ public class HomeController extends Controller implements Initializable {
 
     /**
      * 到我的收藏页面
+     *
      * @param mouseEvent
      */
     public void toMyFavoritPage(MouseEvent mouseEvent) {
 
+    }
+
+
+    public void searchGoodByKeyword(MouseEvent mouseEvent) {
+        String keyword = this.keyword.getText();
+        //通过keyword对数据库商品名称进行模糊查询
+        List<Goods> goodsList = ServiceManager.getGoodsService().searchBykeyWord(keyword);
+        showGoodsInFlowpane(goodsList);
     }
 }

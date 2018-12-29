@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.net.URL;
 
 public class SceneFactory {
-
+    /**
+     * loader可以间接获得当前的controller
+     */
     private static FXMLLoader loader;
 
     public static Scene createSence(String fxml,int width,int height){
