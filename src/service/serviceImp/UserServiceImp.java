@@ -120,7 +120,7 @@ public class UserServiceImp implements UserService {
     }
 
     /**
-     *
+     *向用户购买记录中增加订单
      * @param uid
      * @param goodList
      * @return
