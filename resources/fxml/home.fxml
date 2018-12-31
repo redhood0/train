@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -12,14 +13,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.effect.Reflection?>
 
 <AnchorPane prefHeight="795.0" prefWidth="1119.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <TextField fx:id="keyword" focusTraversable="false" layoutX="150.0" layoutY="26.0" prefHeight="56.0" prefWidth="404.0" promptText="请输入查询信息" />
-      <Button focusTraversable="false" layoutX="554.0" layoutY="26.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="95.0" text="搜索" onMouseClicked="#searchGoodByKeyword"/>
-      <Button focusTraversable="false" layoutX="969.0" layoutY="30.0" mnemonicParsing="false" text="收藏夹" onMouseClicked="#toMyFavoritPage"/>
-      <Button focusTraversable="false" layoutX="1034.0" layoutY="30.0" mnemonicParsing="false" text="购物车" onMouseClicked="#toShopCartPage"/>
-      <Label contentDisplay="RIGHT" layoutX="28.0" layoutY="33.0" prefHeight="42.0" prefWidth="106.0" text="E-shop">
+      <Button focusTraversable="false" layoutX="554.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#searchGoodByKeyword" prefHeight="56.0" prefWidth="95.0" text="搜索" />
+      <Button focusTraversable="false" layoutX="969.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#toMyFavoritPage" text="收藏夹" />
+      <Button focusTraversable="false" layoutX="1034.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#toShopCartPage" text="购物车" />
+      <Label contentDisplay="RIGHT" layoutX="31.0" layoutY="24.0" prefHeight="42.0" prefWidth="106.0" text="E-shop">
+         <effect>
+            <Reflection bottomOpacity="0.2" fraction="0.5" topOffset="-5.0"   />
+         </effect>
          <font>
             <Font size="29.0" />
          </font>

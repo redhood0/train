@@ -6,6 +6,7 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -63,7 +64,7 @@ public class ShopCartController extends Controller  {
             total += (double) item.getBuyNum()*Double.parseDouble(item.getPrice());
         }
         lv_cartList.setItems(observableList);
-        lv_cartList.setCellFactory(n -> {return new ColorCell();});
+        lv_cartList.setCellFactory(n ->  new ColorCell());
 //        lv_cartList.setCellFactory(new Callback<ListView<CartItem>, ListCell<CartItem>>() {
 //            @Override
 ////            public ListCell<CartItem> call(ListView<CartItem> param) {
@@ -71,7 +72,20 @@ public class ShopCartController extends Controller  {
 ////            }
 ////        });
         totalPrice.setText("￥"+String.valueOf(total));
+    }
 
+    public void settleAccounts(MouseEvent mouseEvent) {
+        System.out.println("开始结账");
+        //TODO：把商品记录入订单表（数据库）
+
+        System.out.println(observableList);
+        //TODO：清空购物车（数据库）
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("结算成功");
+        alert.showAndWait();
+        observableList.clear();
+        totalPrice.setText("￥0.00");
 
     }
 

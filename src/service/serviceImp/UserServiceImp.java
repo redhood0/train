@@ -1,6 +1,7 @@
 package service.serviceImp;
 
 import dao.GoodsDao;
+import dao.OrderDao;
 import dao.ShopCartDao;
 import dao.UserDao;
 import javabean.CartItem;
@@ -11,6 +12,7 @@ import util.DbDirverFactory;
 import util.ServiceManager;
 import util.UserManager;
 
+import java.util.Date;
 import java.util.List;
 
 public class UserServiceImp implements UserService {
@@ -18,6 +20,7 @@ public class UserServiceImp implements UserService {
     private UserDao userDao = new UserDao(DbDirverFactory.getFactory());
     private ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
     private GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
+    private OrderDao orderDao = new OrderDao(DbDirverFactory.getFactory());
 
     @Override
     public boolean login(String username, String password) {
@@ -113,6 +116,23 @@ public class UserServiceImp implements UserService {
     @Override
     public int deleteGoodFromCart(int gid, int uid) {
         int row = shopCartDao.deleteByGoodsId(gid,uid);
+        return row;
+    }
+
+    /**
+     *
+     * @param uid
+     * @param goodList
+     * @return
+     */
+    @Override
+    public int addOrderFromCart(int uid, List<CartItem> goodList) {
+        //create ordernum();
+        int row = orderDao.addOrder(uid,String.valueOf(new Date().getTime()));
+        //TODO:get orderid for add orderItem
+        for(CartItem good : goodList){
+            orderDao.addOrderItem(1,good.getId(),good.getGoodname());
+        }
         return row;
     }
 }

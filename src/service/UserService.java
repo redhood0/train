@@ -1,6 +1,7 @@
 package service;
 
 import javabean.CartItem;
+import javabean.Goods;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface UserService {
     public List<CartItem> getCartItemMsg4show(int uid);
 
     public int deleteGoodFromCart(int gid,int uid);
+
+    public int addOrderFromCart(int uid,List<CartItem> goodList);
 }

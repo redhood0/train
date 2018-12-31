@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.OrderMapper">
+
+    <insert id="addOrder">
+        insert into
+        order_tb (uid,ordertime,ordernum,state)
+        VALUES (#{uid},NOW(),#{ordernum},0)
+    </insert>
+
+    <insert id="addOrderItem">
+        insert INTO
+        order_item (oid,gid,gnum)
+        values(#{oid},#{gid},#{gnum});
+    </insert>
+
+
+</mapper>
