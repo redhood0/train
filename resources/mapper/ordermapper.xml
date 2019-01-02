@@ -4,13 +4,13 @@
 
 <mapper namespace="mapper.OrderMapper">
 
-    <insert id="addOrder">
+    <insert id="addOrder" keyProperty="id" useGeneratedKeys="true" parameterType="javabean.Order">
         insert into
         order_tb (uid,ordertime,ordernum,state)
         VALUES (#{uid},NOW(),#{ordernum},0)
     </insert>
 
-    <insert id="addOrderItem">
+    <insert id="addOrderItem" >
         insert INTO
         order_item (oid,gid,gnum)
         values(#{oid},#{gid},#{gnum});

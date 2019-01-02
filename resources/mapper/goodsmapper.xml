@@ -40,6 +40,10 @@
     <select id="getGoodsByKeyWord" resultMap="Goods">
         select * from goods where goodname like '%${keyword}%'
     </select>
+    
+    <update id="updateGoodsStock">
+        update goods set stock = #{stock} where id = #{id};
+    </update>
 
 
 

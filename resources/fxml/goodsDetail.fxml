@@ -21,7 +21,7 @@
       <Button layoutX="552.0" layoutY="289.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="33.0" text="-" onMouseClicked="#minusBuyNum"/>
       <Button layoutX="638.0" layoutY="289.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="33.0" text="+" onMouseClicked="#addBuyNum"/>
       <Label layoutX="708.0" layoutY="294.0" text="库存：" />
-      <Label layoutX="753.0" layoutY="294.0" text="1000件" />
+      <Label fx:id="stock" layoutX="753.0" layoutY="294.0" text="1000件" />
       <Button layoutX="29.0" layoutY="484.0" mnemonicParsing="false" text="商品详情" />
       <Button layoutX="109.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="评价2000+" />
       <Button layoutX="723.0" layoutY="397.0" mnemonicParsing="false" text="加入购物车" onMouseClicked="#addToCart"/>

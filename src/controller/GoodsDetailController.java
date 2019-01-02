@@ -23,7 +23,8 @@ import static javax.print.attribute.standard.MediaSizeName.A;
 
 public class GoodsDetailController extends Controller {
     public Goods goods;
-
+    @FXML
+    public Label stock;
     @FXML
     private TextField buyNum;
     @FXML
@@ -51,6 +52,7 @@ public class GoodsDetailController extends Controller {
     public void setDate(Goods goods) {
         this.goods = goods;
         goodname.setText(goods.getGoodname());
+        stock.setText(String.valueOf(goods.getStock()));
         price.setText("￥" + goods.getPrice());
         goodimg.setImage(new Image(goods.getImgurl()));
     }

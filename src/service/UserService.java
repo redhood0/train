@@ -20,4 +20,6 @@ public interface UserService {
     public int deleteGoodFromCart(int gid,int uid);
 
     public int addOrderFromCart(int uid,List<CartItem> goodList);
+
+    public int clearShopCartByUser(int uid);
 }

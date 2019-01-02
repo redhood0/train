@@ -6,6 +6,7 @@ import dao.ShopCartDao;
 import dao.UserDao;
 import javabean.CartItem;
 import javabean.Goods;
+import javabean.Order;
 import javabean.User;
 import service.UserService;
 import util.DbDirverFactory;
@@ -128,11 +129,20 @@ public class UserServiceImp implements UserService {
     @Override
     public int addOrderFromCart(int uid, List<CartItem> goodList) {
         //create ordernum();
-        int row = orderDao.addOrder(uid,String.valueOf(new Date().getTime()));
-        //TODO:get orderid for add orderItem
+        Order order = new Order(uid,String.valueOf(new Date().getTime()));
+        int row = orderDao.addOrder(order);
+        System.out.println(order.getId());
+
         for(CartItem good : goodList){
-            orderDao.addOrderItem(1,good.getId(),good.getGoodname());
+            orderDao.addOrderItem(order.getId(),good.getId(),good.getBuyNum());
         }
+        return row;
+    }
+
+    @Override
+    public int clearShopCartByUser(int uid) {
+        int cid = shopCartDao.getCidByUid(uid);
+        int row = shopCartDao.deleteAllByCId(cid);
         return row;
     }
 }

@@ -23,4 +23,19 @@ public class GoodsServiceImp implements GoodsService {
         List<Goods> goodsList = goodsDao.getGoodsByKeyWord(keyword);
         return goodsList;
     }
+
+    @Override
+    public int reduceStock(int gid, int buynum) {
+        //查出商品当前库存
+        int stock = goodsDao.getGoodsByid(gid).getStock();
+
+        //TODO:判断当前库存是否够减（不够可能还要进行回滚等操作，目前默认都是够的）
+        if (stock < buynum) {
+            //throw Exception
+        } else {
+            stock -= buynum;
+            return goodsDao.updateGoodsStock(stock,gid);
+        }
+        return 0;
+    }
 }

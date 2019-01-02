@@ -18,4 +18,6 @@ public interface ShopCaetMapper {
 
     public int deleteByGoodsId(@Param("gid") int gid,@Param("customerId") int customerId);
 
+    public int deleteAllByCId(int cid);
+
 }

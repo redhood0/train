@@ -64,6 +64,7 @@ public class ShopCartDao {
         ShopCaetMapper mapper = sqlSession.getMapper(ShopCaetMapper.class);
         int row = mapper.deleteByGoodsId(gid,uid);
         sqlSession.commit();
+        sqlSession.close();
         return row;
 
     }
@@ -74,7 +75,26 @@ public class ShopCartDao {
         //先查出购物车id
         int cid = mapper.getCidByUid(userId);
         List<CartItem> cartItems = mapper.getGoodsByCid(cid);
+        sqlSession.close();
         return cartItems;
     }
+
+    public int deleteAllByCId(int cid){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ShopCaetMapper mapper = sqlSession.getMapper(ShopCaetMapper.class);
+        int row = mapper.deleteAllByCId(cid);
+        sqlSession.commit();
+        sqlSession.close();
+        return row;
+    }
+
+    public int getCidByUid(int uid){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ShopCaetMapper mapper = sqlSession.getMapper(ShopCaetMapper.class);
+        int cid = mapper.getCidByUid(uid);
+        sqlSession.close();
+        return cid;
+    }
+
 
 }

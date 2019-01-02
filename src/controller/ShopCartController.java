@@ -76,16 +76,21 @@ public class ShopCartController extends Controller  {
 
     public void settleAccounts(MouseEvent mouseEvent) {
         System.out.println("开始结账");
-        //TODO：把商品记录入订单表（数据库）
-
-        System.out.println(observableList);
-        //TODO：清空购物车（数据库）
-
+        //把商品记录入订单表（数据库）
+        ServiceManager.getUserService().addOrderFromCart(UserManager.getUser().getId(),observableList);
+        //数据库中清空购物车（数据库），或者把购物车item状态设置为关闭，目前暂时用清空的方案
+        ServiceManager.getUserService().clearShopCartByUser(UserManager.getUser().getId());
+        //结算成功。
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("结算成功");
         alert.showAndWait();
-        observableList.clear();
         totalPrice.setText("￥0.00");
+        //商品表-库存减少
+        for(CartItem item : observableList){
+            ServiceManager.getGoodsService().reduceStock(item.getId(),item.getBuyNum());
+        }
+        observableList.clear();
+
 
     }
 

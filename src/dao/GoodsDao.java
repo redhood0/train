@@ -1,6 +1,7 @@
 package dao;
 
 import javabean.Goods;
+import javabean.Order;
 import mapper.GoodsMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,6 +38,7 @@ public class GoodsDao {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
         Goods goods = mapper.getGoodsByid(id);
+        sqlSession.close();
         return goods;
     }
 
@@ -44,14 +46,25 @@ public class GoodsDao {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
         List<Goods> goods = mapper.getGoodsByKeyWord(keyword);
+        sqlSession.close();
         return goods;
+    }
+
+    public int updateGoodsStock(int stock,int gid){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+        int row = mapper.updateGoodsStock(stock,gid);
+        sqlSession.commit();
+        sqlSession.close();
+        return row;
     }
 
     public static void main(String[] args) {
         DbDirverFactory.driver();
 //        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
         ShopCartDao shopCartDao = new ShopCartDao(DbDirverFactory.getFactory());
-        System.out.println(shopCartDao.deleteByGoodsId(7,4));
+      //  OrderDao orderDao = new OrderDao(DbDirverFactory.getFactory());
+        System.out.println(shopCartDao.deleteAllByCId(4));
 //        GoodsDao goodsDao = new GoodsDao(DbDirverFactory.getFactory());
 //        System.out.println(goodsDao.getGoodsByKeyWord("电"));
 }

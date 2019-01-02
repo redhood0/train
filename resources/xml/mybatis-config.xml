@@ -28,6 +28,8 @@
         <mapper resource="mapper/goodsmapper.xml"/>
         <mapper resource="mapper/usermapper.xml"/>
         <mapper resource="mapper/shopcartmapper.xml"/>
+        <mapper resource="mapper/ordermapper.xml"/>
+
         <!--<mapper resource="mapper/bookMapper.xml"/>-->
     </mappers>
 </configuration>

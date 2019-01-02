@@ -9,5 +9,7 @@ public interface GoodsService {
 
     List<Goods>  searchBykeyWord(String keyword);
 
+    int reduceStock(int gid,int buynum);
+
 
 }

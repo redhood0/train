@@ -10,4 +10,5 @@ public interface GoodsMapper {
     List<Goods> getAllGoods();
     Goods getGoodsByid(int id);
     List<Goods>  getGoodsByKeyWord(@Param("keyword") String keyword);
+    int updateGoodsStock(@Param("stock") int stock,@Param("id") int id);
 }
